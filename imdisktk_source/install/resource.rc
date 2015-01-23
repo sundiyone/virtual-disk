@@ -1,0 +1,115 @@
+#include <windows.h>
+#include <commctrl.h>
+#include <afxres.h>
+#include "resource.h"
+
+1 RT_MANIFEST "UAC.manifest"
+
+2 ICON VD.ico
+
+INSTALLBOX DIALOGEX 0, 0, 290, 220
+		   FONT 9, "MS Shell Dlg", 0, 0, 0
+		   STYLE WS_SYSMENU | DS_SHELLFONT | DS_CENTER
+		   CAPTION "ImDisk - Setup"
+BEGIN
+	CONTROL "", ID_STATIC1, WC_STATIC, 0, 0, 0, 290, 41
+	CONTROL 2, ID_STATIC2, WC_STATIC, SS_ICON | SS_REALSIZEIMAGE | SS_CENTERIMAGE, 3, 0, 48, 41
+	LTEXT "Welcome to the installer for ImDisk Toolkit.", ID_TEXT1, 54, 8, 230, 18
+	LTEXT "", ID_STATIC3, 54, 27, 190, 10
+	LTEXT "Installation folder:", IDC_STATIC, 10, 52, 62, 10
+	EDITTEXT ID_EDIT1, 73, 50, 188, 12, ES_AUTOHSCROLL
+	PUSHBUTTON "...", ID_PBUTTON1, 263, 50, 16, 12
+	GROUPBOX " Components ", ID_GROUP1, 116, 72, 162, 52
+	AUTOCHECKBOX "ImDisk Virtual Disk Driver (required)", ID_CHECK1, 121, 82, 150, 10
+	AUTOCHECKBOX "DiscUtils library (uses .NET Framework 4)", ID_CHECK2, 121, 96, 150, 10
+	AUTOCHECKBOX "RamDisk Configuration Tool", ID_CHECK3, 121, 110, 150, 10
+	GROUPBOX " Options ", ID_GROUP2, 116, 130, 162, 52
+	AUTOCHECKBOX "Enable entries in context menus", ID_CHECK4, 121, 140, 150, 10
+	AUTOCHECKBOX "Request administrator rights in Explorer", ID_CHECK5, 121, 154, 150, 10
+	AUTOCHECKBOX "Create shortcuts on desktop", ID_CHECK6, 121, 168, 150, 10
+	GROUPBOX "", IDC_STATIC, 10, 70, 93, 113
+	LTEXT "Please keep your mouse over an item to get details.", ID_TEXT2, 14, 77, 85, 100
+	LTEXT "", ID_TEXT3, 105, 79, 10, 12
+	LTEXT "", ID_TEXT4, 105, 93, 10, 12
+	LTEXT "", ID_TEXT5, 105, 107, 10, 12
+	LTEXT "", ID_TEXT6, 105, 137, 10, 12
+	LTEXT "", ID_TEXT7, 105, 151, 10, 12
+	LTEXT "", ID_TEXT8, 105, 165, 10, 12
+	PUSHBUTTON "Credits", ID_PBUTTON2, 5, 201, 43, 13
+	DEFPUSHBUTTON "Install", IDOK, 196, 201, 43, 13
+	PUSHBUTTON "Cancel", IDCANCEL, 243, 201, 43, 13
+	GROUPBOX "", IDC_STATIC, -5, 190, 300, 40
+END
+
+CREDITSBOX DIALOGEX 0, 0, 220, 170
+		   FONT 9, "MS Shell Dlg", 0, 0, 0
+		   STYLE WS_SYSMENU | DS_SHELLFONT | DS_CENTER
+		   CAPTION "ImDisk - Credits"
+BEGIN
+	EDITTEXT ID_EDIT1, 0, 0, 220, 145, ES_MULTILINE | ES_READONLY | WS_VSCROLL
+	DEFPUSHBUTTON "OK", IDOK, 94, 151, 43, 13
+END
+
+DOTNETBOX DIALOGEX 0, 0, 269, 100
+		  STYLE DS_SHELLFONT | DS_CENTER
+		  FONT 9, "MS Shell Dlg", 0, 0, 0
+		  CAPTION "ImDisk - Setup"
+BEGIN
+	CONTROL "Installation finished.\n\nHowever, .NET Framework 4 is not present on your system.\nWithout it, you will not be able to mount some image file formats.\n\n"
+			"Please visit the <a href=""http://www.microsoft.com/en-us/download/details.aspx?id=17113"">Microsoft Download Center</a> to download installer.", ID_LINK, WC_LINK, 0, 42, 12, 227, 56
+	DEFPUSHBUTTON "OK", IDOK, 113, 81, 43, 13
+	GROUPBOX "", IDC_STATIC, -5, 70, 280, 40
+END
+
+UNINSTALLBOX DIALOGEX 0, 0, 150, 100
+			 FONT 9, "MS Shell Dlg", 0, 0, 0
+			 STYLE WS_SYSMENU | DS_SHELLFONT | DS_CENTER
+			 CAPTION "ImDisk - Setup"
+BEGIN
+	LTEXT "", ID_TEXT1, 20, 40, 130, 10
+	DEFPUSHBUTTON "Uninstall", IDOK, 56, 81, 43, 13
+	PUSHBUTTON "Cancel", IDCANCEL, 103, 81, 43, 13
+	GROUPBOX "", ID_STATIC1, -5, 70, 160, 40
+	AUTOCHECKBOX "Uninstall driver (no reboot required)", ID_CHECK1, 15, 22, 132, 10
+	AUTOCHECKBOX "Remove settings", ID_CHECK2, 15, 40, 70, 10
+END
+
+SETTINGSBOX DIALOGEX 0, 0, 240, 160
+			FONT 9, "MS Shell Dlg", 0, 0, 0
+			STYLE WS_SYSMENU | DS_SHELLFONT | DS_CENTER
+			CAPTION "ImDisk - Setup"
+BEGIN
+	GROUPBOX " General Settings ", IDC_STATIC, 6, 6, 228, 129
+	AUTOCHECKBOX "Enable entries in context menus", ID_CHECK1, 25, 25, 120, 10
+	AUTOCHECKBOX "Request administrator rights in Explorer", ID_CHECK2, 25, 44, 140, 10
+	PUSHBUTTON "Save Parameters...", ID_PBUTTON1, 25, 106, 71, 13
+	AUTOCHECKBOX "with TEMP Environment Variables", ID_CHECK3, 100, 108, 121, 10
+	DEFPUSHBUTTON "OK", IDOK, 146, 141, 43, 13
+	PUSHBUTTON "Cancel", IDCANCEL, 193, 141, 43, 13
+	LTEXT "", ID_TEXT1, 10, 138, 100, 18
+	GROUPBOX " Hide the following drives in Explorer: ", IDC_STATIC, 15, 66, 211, 28
+	AUTOCHECKBOX "", ID_CHECK_A, 17, 77, 7, 7
+	AUTOCHECKBOX "", ID_CHECK_A + 1, 25, 77, 7, 7
+	CONTROL "A", ID_TEXT2, WC_STATIC, SS_NOPREFIX, 18, 84, 7, 8
+	CONTROL "B", ID_TEXT2 + 1, WC_STATIC, SS_NOPREFIX, 26, 84, 7, 8
+END
+
+
+1 VERSIONINFO
+FILEVERSION 1,2,4,0
+BEGIN
+BLOCK "StringFileInfo"
+	BEGIN
+	BLOCK "040904b0"
+		BEGIN
+			VALUE "FileDescription", "Setup"
+			VALUE "OriginalFilename", "setup.exe"
+			VALUE "ProductName", "imdisk"
+			VALUE "ProductVersion", "1.2.4.0"
+		END
+	END
+BLOCK "VarFileInfo"
+	BEGIN
+		VALUE "Translation", 0x0409, 0x04B0
+	END
+END
